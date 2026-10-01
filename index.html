@@ -289,7 +289,7 @@
       <p class="cd-label" id="cd-label">until I pick you up</p>
 
       <div class="buttons">
-        <button class="btn btn-gold" id="add-cal">Add to my calendar</button>
+        <a class="btn btn-gold" id="add-cal" href="date-night.ics" type="text/calendar">Add to my calendar</a>
         <a class="btn btn-link" id="gcal" href="#" target="_blank" rel="noopener">Use Google Calendar instead</a>
       </div>
 
@@ -392,33 +392,13 @@
   }
 
   // ---------- calendar ----------
+  // "Add to my calendar" is a plain link to /date-night.ics so iPhone Safari
+  // opens the native Calendar sheet. Google Calendar is the web fallback.
   function icsStamp(d) {
     return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
   }
   const title = 'Date night with Lewis 👑';
   const desc = 'Dress nice. The rest is a surprise. Pick-up at 7:00 PM sharp.';
-  const ics = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Lewis//Date Night//EN', 'CALSCALE:GREGORIAN',
-    'BEGIN:VEVENT',
-    'UID:date-night-2026-10-17@lewis',
-    'DTSTAMP:' + icsStamp(new Date()),
-    'DTSTART:' + icsStamp(DATE),
-    'DTEND:' + icsStamp(DATE_END),
-    'SUMMARY:' + title,
-    'DESCRIPTION:' + desc,
-    'BEGIN:VALARM', 'TRIGGER:-PT2H', 'ACTION:DISPLAY', 'DESCRIPTION:Date night in 2 hours. Go get pretty.', 'END:VALARM',
-    'END:VEVENT', 'END:VCALENDAR'
-  ].join('\r\n');
-
-  document.getElementById('add-cal').addEventListener('click', () => {
-    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'date-night-with-lewis.ics';
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
-  });
-
   const g = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
     + '&text=' + encodeURIComponent(title)
     + '&dates=' + icsStamp(DATE) + '/' + icsStamp(DATE_END)

@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Lewis//Date Night//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:date-night-2026-10-17@princess-brianna.vercel.app
+DTSTAMP:20261001T120000Z
+DTSTART:20261017T190000
+DTEND:20261017T230000
+SUMMARY:Date night with Lewis 👑
+DESCRIPTION:Dress nice. The rest is a surprise. Pick-up at 7:00 PM sharp.
+URL:https://princess-brianna.vercel.app
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Date night in 2 hours. Go get pretty.
+END:VALARM
+END:VEVENT
+END:VCALENDAR

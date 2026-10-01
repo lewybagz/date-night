@@ -1,0 +1,11 @@
+{
+  "headers": [
+    {
+      "source": "/date-night.ics",
+      "headers": [
+        { "key": "Content-Type", "value": "text/calendar; charset=utf-8" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"date-night-with-lewis.ics\"" }
+      ]
+    }
+  ]
+}
